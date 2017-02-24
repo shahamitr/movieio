@@ -1,0 +1,31 @@
+{
+  "name": "movieio",
+  "version": "1.0.0",
+  "description": "find in and out of any movie, tv shows.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahamitr/movieio.git"
+  },
+  "keywords": [
+    "movie",
+    "tvshow",
+    "nodejs",
+    "bot"
+  ],
+  "author": "Amit Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahamitr/movieio/issues"
+  },
+  "homepage": "https://github.com/shahamitr/movieio#readme",
+  "dependencies": {
+    "botbuilder": "^3.7.0",
+    "express": "^4.14.1",
+    "https": "^1.0.0",
+    "restify": "^4.3.0"
+  }
+}
