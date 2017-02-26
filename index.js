@@ -14,6 +14,12 @@ var server = restify.createServer();
 
 console.log(server);
 
+var os = require("os");
+var hostname = os.hostname();
+
+console.log(server);
+
+
 server.listen(3900, function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
