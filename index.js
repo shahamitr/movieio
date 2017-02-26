@@ -17,7 +17,7 @@ console.log(server);
 var os = require("os");
 var hostname = os.hostname();
 
-console.log(server);
+console.log(os);
 
 
 server.listen(3900, function () {
