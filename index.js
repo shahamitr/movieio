@@ -21,22 +21,7 @@ env(__dirname + '/.env');
 // Setup Restify Server
 var server = restify.createServer();
 
-var os = require("os");
-console.log(os);
-console.log(os.hostname())
-console.log(os.type())
-console.log(os.platform())
-console.log(os.arch())
-console.log(os.release())
-console.log(os.uptime())
-console.log(os.loadavg())
-console.log(os.totalmem())
-console.log(os.freemem())
-console.log(os.cpus())
-console.log(os.networkInterfaces())
-
-server.listen(3900, function () {
-   console.log('%s listening to %s', server.name, server.url); 
+app.listen(3900, function () {
 });
 
 // server.listen(process.env.port || process.env.PORT || 3978, function () {
@@ -55,7 +40,7 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
-server.post('/api/messages', connector.listen());
+app.post('/api/messages', connector.listen());
 
 // var bot = new builder.UniversalBot(connector, function(session){
 	// session.send("Welcome to the Movie.io bot, I can help you with finding lots of things about following!!");
