@@ -4,6 +4,15 @@ var env = require('node-env-file');
 var https = require('https');
 var http = require('http');
 
+var express = require('express');
+var app = express();
+var path = require('path');
+
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 env(__dirname + '/.env');
 
 //=========================================================
@@ -12,10 +21,8 @@ env(__dirname + '/.env');
 // Setup Restify Server
 var server = restify.createServer();
 
-console.log(server);
-
 var os = require("os");
-console.log(os));
+console.log(os);
 console.log(os.hostname())
 console.log(os.type())
 console.log(os.platform())
