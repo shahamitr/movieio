@@ -65,6 +65,14 @@ var optionData = {
     "Celebrity": {
         id: 3,
         category: "Celebrity"
+    },
+	"Movies in Theater Now": {
+        id: 4,
+        category: "Movies in Theater Now"
+    },
+	"Popular Movies": {
+        id: 5,
+        category: "Popular Movies"
     }
 };
 
@@ -102,13 +110,17 @@ bot.dialog('selectOption', [
             retryPrompt: 'Ooops, what you wrote is not a valid option, please try again'
         });
 	},
-	function (session, results) {
+	function (session, results, next) {
         if (results.response) {
 			if(optionData[results.response.entity]){
 				var selectedOption = optionData[results.response.entity];
 				session.dialogData.selectedOption = selectedOption;
-				session.send('Please type %(category)s name, you would like to know about.',selectedOption);
-				builder.Prompts.text(session, '');
+				if(optionData[results.response.entity].id == 4 || optionData[results.response.entity].id == 5) {
+					next();
+				} else {
+					session.send('Please type %(category)s name, you would like to know about.',selectedOption);
+					builder.Prompts.text(session, '');					
+				}
 			} else {
 				session.send("ok");
 			}
@@ -119,10 +131,21 @@ bot.dialog('selectOption', [
 	function (session, results) {
 		var apiKey = process.env.API_KEY_MOVIEDB;
 		var selectedOption = session.dialogData.selectedOption.category;
+		var selectedOptionId = session.dialogData.selectedOption.id;
 		var url = "";
 		
 		if(selectedOption == 'Celebrity'){
 			url = process.env.MOVIE_DB_URL+"search/person?api_key="+apiKey+"&query="+results.response;
+		} else if(selectedOptionId == 4){
+			var d = new Date();
+			var newDate = new Date();
+			newDate.setDate(newDate.getDate() - 15);
+
+			var to_date = d.getFullYear()+'-'+(parseInt(d.getMonth())+1)+'-'+d.getDate();
+			var from_date = newDate.getFullYear()+'-'+(parseInt(newDate.getMonth())+1)+'-'+newDate.getDate();
+			url = process.env.MOVIE_DB_URL+"discover/movie?primary_release_date.gte="+from_date+"&primary_release_date.lte="+to_date+"&api_key="+apiKey;
+		} else if(selectedOptionId == 5){
+			url = process.env.MOVIE_DB_URL+"discover/movie?sort_by=popularity.desc&api_key="+apiKey;
 		} else {
 			url = process.env.MOVIE_DB_URL+"search/movie?api_key="+apiKey+"&query="+results.response;
 		}
