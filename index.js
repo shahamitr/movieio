@@ -21,7 +21,10 @@ env(__dirname + '/.env');
 // Setup Restify Server
 var server = restify.createServer();
 
-app.listen(3900, function () {
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
 
 // server.listen(process.env.port || process.env.PORT || 3978, function () {
