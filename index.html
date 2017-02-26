@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie.IO</title>
+	    <link href="https://unpkg.com/botframework-webchat/botchat.css" rel="stylesheet" />
+
 </head>
 <body>
 
-<iframe height="500px" width="500px" src='https://webchat.botframework.com/embed/movie-io?s=WywbM1ebf9w.cwA._w0.2Stn79y3dmnNPR8vF9sr-ILhb5XJ0xPX_6czUPWm7J0'></iframe>
+
+
+    <div id="bot"/>
+    <script src="https://unpkg.com/botframework-webchat/botchat.js"></script>
+    <script>
+      BotChat.App({
+        directLine: { secret: '7iquYiJy_I4.cwA.W9c.ZFiKNkgle9Gv6XXXLoll8GIJkGq9_VjVXMpFBGhDwVI' },
+        user: { id: 'userid' },
+        bot: { id: 'botid' }
+      }, document.getElementById("bot"));
+    </script>
+
 
 </body>
 </html>
