@@ -215,8 +215,8 @@ bot.dialog('selectOption', [
 						session.send(msg);
 					} else {
 						var arrayOfResult = [];
-						if(result_lenth > 5){
-							result_lenth = 5;
+						if(result_lenth > 10){
+							result_lenth = 10;
 						}
 						for(var i=0;i<result_lenth;i++) {
 							id = parsed.results[i].id;
@@ -279,8 +279,8 @@ bot.dialog('selectOption', [
 						session.send(msg);
 					} else {
 						var arrayOfResult = [];
-						if(result_lenth > 5){
-							result_lenth = 5;
+						if(result_lenth > 10){
+							result_lenth = 10;
 						}
 						for(var i=0;i<result_lenth;i++) {
 							id = parsed.results[i].id;
