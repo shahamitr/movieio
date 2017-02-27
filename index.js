@@ -165,6 +165,7 @@ bot.dialog('selectOption', [
 			var isDataPresent = false;
 			var result_lenth = parsed.results.length;
 			
+			
 			if(result_lenth >= 1){
 				isDataPresent = true;
 			}
@@ -214,6 +215,9 @@ bot.dialog('selectOption', [
 						session.send(msg);
 					} else {
 						var arrayOfResult = [];
+						if(result_lenth > 5){
+							result_lenth = 5;
+						}
 						for(var i=0;i<result_lenth;i++) {
 							id = parsed.results[i].id;
 							name = parsed.results[i].original_title;
