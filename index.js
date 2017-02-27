@@ -161,7 +161,7 @@ bot.dialog('selectOption', [
 		  // After the response is completed, parse it
 		  res.on('end', function() {
 			var parsed = JSON.parse(body);
-			console.log(parsed.results);
+			//console.log(parsed.results);
 			var isDataPresent = false;
 			var result_lenth = parsed.results.length;
 			
